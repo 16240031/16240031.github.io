@@ -17,10 +17,10 @@ function next_pic() {
     }
     showCurrentDot();
     var newLeft;
-    if (wrap.style.left === "-5120px") {
-        newLeft = -2560;
+    if (wrap.style.left === "-4560px") {
+        newLeft = -2280;
     } else {
-        newLeft = parseInt(wrap.style.left) - 1280;
+        newLeft = parseInt(wrap.style.left) - 1140;
     }
     wrap.style.left = newLeft + "px";
 }
@@ -33,9 +33,9 @@ function prev_pic() {
     showCurrentDot();
     var newLeft;
     if (wrap.style.left === "0px") {
-        newLeft = -5120;
+        newLeft = -4560;
     } else {
-        newLeft = parseInt(wrap.style.left) + 1280;
+        newLeft = parseInt(wrap.style.left) + 1140;
     }
     wrap.style.left = newLeft + "px";
 }
@@ -67,13 +67,13 @@ for (var i = 0, len = dots.length; i < len; i++) {
     (function(i) {
         dots[i].onclick = function() {
             var dis = index - i;
-            if (index == 2 && parseInt(wrap.style.left) !== -3840) {
+            if (index == 2 && parseInt(wrap.style.left) !== -3420) {
                 dis = dis - 5;
             }
-            if (index == 0 && parseInt(wrap.style.left) !== -1280) {
+            if (index == 0 && parseInt(wrap.style.left) !== -1140) {
                 dis = 5 + dis;
             }
-            wrap.style.left = (parseInt(wrap.style.left) + dis * 1280) + "px";
+            wrap.style.left = (parseInt(wrap.style.left) + dis * 1140) + "px";
             index = i;
             showCurrentDot();
         }

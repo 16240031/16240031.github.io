@@ -45,7 +45,7 @@ body {
 
 .hmNav .navContent {
     margin: 0 auto;
-    width: 1280px;
+    width: 1140px;
     height: 60px;
 }
 
@@ -130,7 +130,7 @@ body {
 
 .banner-con .container {
     position: relative;
-    width: 1280px;
+    width: 1140px;
     height: 300px;
     margin: 0 auto;
     overflow: hidden;
@@ -138,14 +138,14 @@ body {
 
 .banner-con .container .wrap {
     position: absolute;
-    width: 6400px;
+    width: 5700px;
     height: 300px;
     z-index: 1;
 }
 
 .banner-con .container .wrap img {
     float: left;
-    width: 1280px;
+    width: 1140px;
     height: 300px;
 }
 
@@ -204,7 +204,7 @@ body {
 
 /* ====================描述块=================== */
 .des-container {
-    width: 1280px;
+    width: 1140px;
     margin: 15px auto;
     overflow: hidden;
 }
