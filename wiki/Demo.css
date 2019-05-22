@@ -1,0 +1,315 @@
+/* ====================通用样式================= */
+body {
+    min-width: 1280px;
+}
+
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right;
+}
+
+.pl-30 {
+    padding-left: 30px;
+}
+
+.pr-30 {
+    padding-right: 30px;
+}
+
+.bfc-overflow {
+    overflow: hidden;
+}
+
+.center {
+    margin: 0 auto;
+}
+
+.pb-30 {
+    padding-bottom: 30px;
+}
+
+.flex-box {
+    display: -webkit-flex;
+    display: flex;
+}
+
+
+/* ======================导航条================= */
+.hmNav {
+    width: 100%;
+    background-color: rgb(55, 191, 145);
+}
+
+.hmNav .navContent {
+    margin: 0 auto;
+    width: 1280px;
+    height: 60px;
+}
+
+.hmNav .navContent .logo {
+    float: left;
+    display: block;
+    height: 58px;
+}
+
+.hmNav .navContent .logo>img {
+    height: 100%;
+}
+
+.hmNav .navContent .links {
+    float: right;
+}
+
+.hmNav .navContent .links .link {
+    position: relative;
+    display: inline-block;
+}
+
+.hmNav .navContent .links .link:hover {
+    background-color: rgb(80, 200, 180);
+}
+
+.hmNav .navContent .links .link>a {
+    font-size: 18px;
+    line-height: 60px;
+    display: block;
+    padding: 0 15px;
+    height: 60px;
+}
+
+.hmNav .navContent .links .link .dropContent {
+    position: absolute;
+    overflow: hidden;
+    height: 0;
+    left: 0px;
+    -webkit-transition: height 2s linear;
+    -moz-transition: height 2s linear;
+    transition: height 2s linear;
+}
+
+.hmNav .navContent .links .link:hover .dropContent {
+    height: auto;
+    z-index: 100;
+}
+
+.hmNav .navContent .links .link .dropContent ul li {
+    position: relative;
+    background-color: rgb(55, 191, 145);
+}
+
+.hmNav .navContent .links .link .dropContent ul li a {
+    white-space: nowrap;
+    height: 35px;
+    line-height: 35px;
+    display: block;
+    padding: 1px 18px;
+}
+
+
+.hmNav .dropContent ul li a:hover {
+    background-color: rgb(80, 200, 180);
+}
+
+
+
+
+/* ===================轮播图================= */
+
+.banner-con {
+    width: 100%;
+    overflow: hidden;
+    background: rgba(230, 230, 230, .3);
+}
+
+.banner-con a {
+    text-decoration: none;
+}
+
+.banner-con .container {
+    position: relative;
+    width: 1280px;
+    height: 300px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.banner-con .container .wrap {
+    position: absolute;
+    width: 6400px;
+    height: 300px;
+    z-index: 1;
+}
+
+.banner-con .container .wrap img {
+    float: left;
+    width: 1280px;
+    height: 300px;
+}
+
+.banner-con .container .buttons {
+    position: absolute;
+    right: 5px;
+    bottom: 40px;
+    width: 150px;
+    height: 10px;
+    z-index: 2;
+}
+
+.banner-con .container .buttons span {
+    margin-left: 5px;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: white;
+    text-align: center;
+    color: black;
+    cursor: pointer;
+    font-size: 80%;
+}
+
+.banner-con .container .buttons span.on {
+    background-color: gray;
+}
+
+.banner-con .container .arrow {
+    position: absolute;
+    top: 35%;
+    color: white;
+    padding: 0px 14px;
+    border-radius: 50%;
+    font-size: 50px;
+    z-index: 2;
+    display: none;
+}
+
+.banner-con .container .arrow_left {
+    left: 10px;
+}
+
+.banner-con .container .arrow_right {
+    right: 10px;
+}
+
+.banner-con .container:hover .arrow {
+    display: block;
+}
+
+.banner-con .container .arrow:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+/* ====================描述块=================== */
+.des-container {
+    width: 1280px;
+    margin: 15px auto;
+    overflow: hidden;
+}
+
+.des-container>h1 {
+    padding: 15px 0;
+    font-size: 30px;
+}
+
+.des-container .text-p {
+    text-indent: 30px;
+}
+
+.des-container .img-box {
+    width: 350px;
+}
+
+.des-container .img-box>img {
+    width: 100%;
+
+}
+
+.model3 {
+    padding-top: 135px;
+}
+
+
+/* ==============成员列表================ */
+
+/*===============Member list model1=============*/
+.member-box {
+    display: flex;
+    flex-wrap: wrap;
+    flex-grow: 1;
+    justify-content: center;
+}
+
+.member-box .member-item {
+    margin: 0 2px;
+    flex-basis: 200px;
+    text-align: center;
+    border: 1px solid #222;
+    margin: 10px;
+    overflow: hidden;
+}
+
+/*.member-box .member-item .member-show{
+    margin: 0 2px;
+    width: 100%;
+    overflow: hidden;
+    border:1px solid red;
+}*/
+.member-box .member-item img {
+    width: 150px;
+    margin-top: 10px;
+}
+
+.member-box .member-item .member-name {}
+
+.member-box .member-item .member-postion {}
+
+.member-box .member-item .member-desc {
+    display: none;
+    padding: 0 12px 10px 12px;
+    text-indent: 28px;
+    text-align: justify;
+}
+
+.member-box .member-item:hover .member-desc {
+    display: block;
+}
+
+
+/* =============Member list model2============ */
+.member-model2 {
+    box-sizing: border-box;
+    width: 100%;
+    overflow: hidden;
+    padding-left: 20px;
+}
+
+.member-model2 .model2-item {
+
+    float: left;
+    width: 220px;
+    margin-right: 15px;
+    overflow: hidden;
+}
+
+.member-model2 .model2-item .model2-default {
+    padding: 15px 0;
+    text-align: center;
+    background-color: rgb(240,240,240);
+}
+
+.member-model2 .model2-item .model2-default img {
+    width: 165px;
+}
+
+.member-model2 .model2-item .model-hide {
+    background-color: #999  ;
+    display: none;
+}
+
+.member-model2 .model2-item:hover .model-hide {
+
+    display: block;
+}
