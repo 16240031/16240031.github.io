@@ -79,6 +79,15 @@ body {
     padding: 0 15px;
     height: 60px;
 }
+.hmNav .navContent .links .link>span {
+    font-size: 18px;
+    line-height: 60px;
+    display: block;
+    padding: 0 15px;
+    height: 60px;
+    cursor: pointer;
+}
+
 
 .hmNav .navContent .links .link .dropContent {
     position: absolute;
@@ -235,48 +244,33 @@ body {
 /* ==============成员列表================ */
 
 /*===============Member list model1=============*/
-.member-box {
-    display: flex;
-    flex-wrap: wrap;
-    flex-grow: 1;
-    justify-content: center;
-}
-
-.member-box .member-item {
-    margin: 0 2px;
-    flex-basis: 200px;
-    text-align: center;
-    border: 1px solid #222;
-    margin: 10px;
-    overflow: hidden;
-}
-
-/*.member-box .member-item .member-show{
-    margin: 0 2px;
+.member-model1 {
+    box-sizing: border-box;
     width: 100%;
     overflow: hidden;
-    border:1px solid red;
-}*/
-.member-box .member-item img {
+    padding-left: 20px;
+}
+.member-model1 .model1-item{
+    width: 100%;
+    overflow: hidden;
+}
+.member-model1 .model1-item img{
     width: 150px;
-    margin-top: 10px;
+    float: left;
 }
-
-.member-box .member-item .member-name {}
-
-.member-box .member-item .member-postion {}
-
-.member-box .member-item .member-desc {
-    display: none;
-    padding: 0 12px 10px 12px;
-    text-indent: 28px;
-    text-align: justify;
+.member-model1 .model1-item .model1-desbox{
+    width: 100%;
+    padding-left: 175px;
 }
-
-.member-box .member-item:hover .member-desc {
-    display: block;
+.member-model1 .model1-item .model1-desbox .name{
+    padding-bottom: 15px;
 }
+.member-model1 .model1-item .model1-desbox .position{
+    padding-bottom: 15px;
+}
+.member-model1 .model1-item .model1-desbox .intro-self{
 
+}
 
 /* =============Member list model2============ */
 .member-model2 {
