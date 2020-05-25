@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<title>&nbsp;</title>
+	<style>
+		body {
+			margin: 0;
+		}
+		#app{
+			width: 100%;
+			height: 100%;
+			font-family: Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,微软雅黑,Arial,sans-serif;
+	    -webkit-tap-highlight-color: transparent;
+	    -webkit-font-smoothing: antialiased;
+		}
+		.main-container{
+			width: 100%;
+			height: 100%;
+		}
+		.qrcode-box{
+			padding: 10px;
+			padding-bottom: 0;
+			text-align: center;
+			background-color: rgb(249, 249, 249);
+		}
+		img{
+			width: 256px;
+			height: 256px;
+		}
+		.info-text {
+			padding-bottom: 10px;
+		}
+		.first {
+			font-size: 18px;
+		}
+		.color-purple{
+			color: rgb(217, 140, 231);
+		}
+		.detail-box{
+			/*padding: 16px 0 10px;*/
+			/*padding: 16px 20px 10px;*/
+		}
+		.title{
+			margin: 0;
+			padding: 16px 0;
+			font-size: 16px;
+			color: #1E2329;
+			line-height: 16px;
+			font-weight: normal;
+		}
+		.info-box {
+			padding: 0 20px 10px;
+			border-bottom-style: solid;
+			border-bottom-width: 1px;
+			border-bottom-color: #e8e8e8;
+		}
+		.outschool-info {
+			border: none;
+		}
+		.row {
+			padding: 6px 0;
+			font-family: "PingFang SC","Microsoft YaHei","Times New Roman";
+		}
+		.cell-title {
+			display: inline-block;
+			width: 104px;
+			vertical-align: middle;
+			color: #92969C;
+			font-size: 14px;
+		}
+		.cell-value{
+			color: #1E2329;
+			font-size: 14px;
+		}
+		button{
+			width: 100%;
+			height: 44px;
+			outline: 0;
+			border: 0;
+			text-align: center;
+			border-radius: 0;
+			color: #FFFFFF;
+	    background-color: #52C7CA;
+	    box-shadow: 0 0 1px #52B5B7 inset;
+	    font-size: 18px;
+		}
+		.form-bg{
+			position: fixed;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			background-color: rgba(0, 0, 0, 0.8);
+		}
+		.form-box {
+			margin: 30px 10px 0;
+			padding: 20px 10px;
+			background-color: rgb(255, 255, 255);
+		}
+		.form-row{
+			padding-bottom: 10px;
+		}
+		
+	</style>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+</head>
+<body>
+	<div id="app">
+		<div class="main-container">
+			<div class="qrcode-box">
+				<img src="./purple2.jpg" alt="">
+				<div class="info-text first">出入学校时请出示此二维码</div>
+				<div class="info-text color-purple">绿码（蓝码或紫码）：符合返校或出校安排</div>
+				<div class="info-text">红码：健康信息异常</div>
+				<div class="info-text">黄码：未报备或未到返校或出校时间</div>
+				<div class="info-text last">生成时间：{{createTime}}<br/>（此返校码当天有效）</div>
+			</div>
+			<div class="detail-box">
+				<div class="info-box base-info">
+					<h2 class="title">基本信息</h2>
+					<div class="row">
+						<span class="cell-title">信息更新时间</span><span class="cell-value">{{createTime}}</span>
+					</div>
+					<div class="row">
+						<span class="cell-title">学号</span><span class="cell-value">{{schoolNum}}</span>
+					</div>
+					<div class="row">
+						<span class="cell-title">姓名</span><span class="cell-value">{{name}}</span>
+					</div>
+					<div class="row">
+						<span class="cell-title">学院</span><span class="cell-value">{{academy}}</span>
+					</div>
+					<div class="row">
+						<span class="cell-title">班级</span><span class="cell-value">{{grade}}</span>
+					</div>
+					<div class="row">
+						<span class="cell-title">辅导员</span><span class="cell-value">陈冀东</span>
+					</div>
+					<div class="row">
+						<span class="cell-title">辅导员电话</span><span class="cell-value">13691980123</span>
+					</div>
+				</div>
+				<div class="info-box health-info">
+					<h2 class="title">健康信息</h2>
+					<div class="row">
+						<span class="cell-title">身体健康状态</span><span class="cell-value">健康</span>
+					</div>
+				</div>
+				<div class="info-box sheni-info">
+					<h2 class="title">深i您健康信息</h2>
+					<div class="row">
+						<span class="cell-title">健康码</span><span class="cell-value">可返校</span>
+					</div>
+				</div>
+				<div class="info-box outschool-info">
+					<h2 class="title">出校信息</h2>
+					<div class="row">
+						<span class="cell-title">出校时间</span><span class="cell-value">{{outTime}}</span>
+					</div>
+					<div class="row">
+						<span class="cell-title">出校大门</span><span class="cell-value">官龙校区正门</span>
+					</div>
+				</div>
+			</div>
+			<button @click="show = true">
+				临时出校报备
+			</button>
+		</div>
+		<div class="form-bg" v-if="show">
+			<div class="form-box">
+				<div class="form-row">
+					<div class="label">
+						生成时间： <input :value="createTime" v-model="createTime"/>
+					</div>
+				</div>
+				<div class="form-row">
+					<div class="label">
+						信息更新时间： <input :value="updateTime" v-model="updateTime"/>
+					</div>
+				</div>
+				<div class="form-row">
+					<div class="label">
+						学号： <input :value="schoolNum" v-model="schoolNum"/>
+					</div>
+				</div>
+				<div class="form-row">
+					<div class="label">
+						姓名： <input :value="name" v-model="name"/>
+					</div>
+				</div>
+				<div class="form-row">
+					<div class="label">
+						学院： <input :value="academy" v-model="academy"/>
+					</div>
+				</div>
+				<div class="form-row">
+					<div class="label">
+						班级： <input :value="grade" v-model="grade"/>
+					</div>
+				</div>
+				<div class="form-row">
+					<div class="label">
+						出校时间： <input :value="outTime" v-model="outTime"/>
+					</div>
+				</div>
+				<button class="submit" @click="show = false">
+					确定
+				</button>
+			</div>
+		</div>
+	</div>
+	<script>
+		var app = new Vue({
+			el: '#app',
+			data: {
+				createTime: '2020-05-25 00:00:00',
+				updateTime: '2020-05-25',
+				schoolNum: '1624',
+				name: '张三',
+				academy: '人工智能学院',
+				grade: '14计科1',
+				outTime: '2020-05-25 09:00-22:00',
+				show: false
+			}
+		})
+	</script>
+</body>
+</html>

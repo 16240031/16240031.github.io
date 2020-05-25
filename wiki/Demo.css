@@ -1,8 +1,12 @@
 /* ====================通用样式================= */
 body {
     min-width: 1280px;
+    background-color: #fff;
+    position: absolute;
 }
-
+#globalWrapper{
+    padding:0;
+}
 .fl {
     float: left;
 }
