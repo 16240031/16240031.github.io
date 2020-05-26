@@ -221,7 +221,28 @@
 				academy: '人工智能学院',
 				grade: '14计科1',
 				outTime: '2020-05-25 09:00-22:00',
-				show: false
+				show: false,
+				today: '',
+				currentTime: ''
+			},
+			methods: {
+				getTime() {
+					let date = new Date()
+					let year = date.getFullYear()
+					let month = date.getMonth()+1 < 10 ? '0'+(date.getMonth()+1) : date.getMonth()+1
+					let day = date.getDate() < 10 ? '0'+date.getDate() : date.getDate()
+					let hours = date.getHours() < 10 ? '0'+date.getHours() : date.getHours()
+					let minutes = date.getMinutes() < 10 ? '0'+date.getMinutes() : date.getMinutes()
+					let seconds = date.getSeconds() < 10 ? '0'+date.getSeconds() : date.getSeconds()
+					this.today = year+'-'+month+'-'+day
+					this.currentTime = hours+':'+minutes+':'+seconds
+				}
+			},
+			mounted(){
+				this.getTime()
+				this.createTime = this.today+' '+this.currentTime
+				this.updateTime = this.today
+				this.outTime = this.today+' '+'09:00-22:00'
 			}
 		})
 	</script>
