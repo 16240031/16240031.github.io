@@ -5,6 +5,9 @@
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<title>&nbsp;</title>
 	<style>
+		[v-cloak] {
+			display: none;
+		}
 		body {
 			margin: 0;
 		}
@@ -41,6 +44,7 @@
 			color: rgb(217, 140, 231);
 		}
 		.detail-box{
+			margin-bottom: 20px;
 			/*padding: 16px 0 10px;*/
 			/*padding: 16px 20px 10px;*/
 		}
@@ -116,7 +120,7 @@
 </head>
 <body>
 	<!-- <h3>系统维护，暂停服务！请勿联系管理员。</h3> -->
-	<div id="app">
+	<div id="app" v-cloak>
 		<div class="main-container">
 			<div class="qrcode-box">
 				<img src="./code.png" alt="">
@@ -124,31 +128,31 @@
 				<div class="info-text color-purple">绿码（蓝码或紫码）：符合返校或出校安排</div>
 				<div class="info-text">红码：健康信息异常</div>
 				<div class="info-text">黄码：未报备或未到返校或出校时间</div>
-				<div class="info-text last">生成时间：{{createTime}}<br/>（此返校码当天有效）</div>
+				<div class="info-text last">生成时间：{{ createTime }}<br/>（此返校码当天有效）</div>
 			</div>
 			<div class="detail-box">
 				<div class="info-box base-info">
 					<h2 class="title">基本信息</h2>
 					<div class="row">
-						<span class="cell-title">信息更新时间</span><span class="cell-value">{{updateTime}}</span>
+						<span class="cell-title">信息更新时间</span><span class="cell-value">{{ updateTime }}</span>
 					</div>
 					<div class="row">
-						<span class="cell-title">学号</span><span class="cell-value">{{schoolNum}}</span>
+						<span class="cell-title">学号</span><span class="cell-value">{{ schoolNum }}</span>
 					</div>
 					<div class="row">
-						<span class="cell-title">姓名</span><span class="cell-value">{{name}}</span>
+						<span class="cell-title">姓名</span><span class="cell-value">{{ name }}</span>
 					</div>
 					<div class="row">
-						<span class="cell-title">学院</span><span class="cell-value">{{academy}}</span>
+						<span class="cell-title">学院</span><span class="cell-value">{{ academy }}</span>
 					</div>
 					<div class="row">
-						<span class="cell-title">班级</span><span class="cell-value">{{grade}}</span>
+						<span class="cell-title">班级</span><span class="cell-value">{{ grade }}</span>
 					</div>
 					<div class="row">
-						<span class="cell-title">辅导员</span><span class="cell-value">{{instructor}}</span>
+						<span class="cell-title">辅导员</span><span class="cell-value">{{ instructor }}</span>
 					</div>
 					<div class="row">
-						<span class="cell-title">辅导员电话</span><span class="cell-value">{{phone}}</span>
+						<span class="cell-title">辅导员电话</span><span class="cell-value">{{ phone }}</span>
 					</div>
 				</div>
 				<div class="info-box health-info">
@@ -172,63 +176,8 @@
 						<span class="cell-title">出校大门</span><span class="cell-value">官龙校区正门</span>
 					</div>
 				</div>
-			</div>
-			<button @click.once="show = true">
-				临时出校报备
-			</button>
-			<!-- <button @click="setInfo">
-				临时出校报备
-			</button> -->
-		</div>
-		<div class="form-bg" v-if="show">
-			<div class="form-box">
-				<div class="form-row">
-					<div class="label">
-						生成时间： <input :value="createTime" v-model="createTime"/>
-					</div>
-				</div>
-				<div class="form-row">
-					<div class="label">
-						信息更新时间： <input :value="updateTime" v-model="updateTime"/>
-					</div>
-				</div>
-				<div class="form-row">
-					<div class="label">
-						学号： <input :value="schoolNum" v-model="schoolNum"/>
-					</div>
-				</div>
-				<div class="form-row">
-					<div class="label">
-						姓名： <input :value="name" v-model="name"/>
-					</div>
-				</div>
-				<div class="form-row">
-					<div class="label">
-						学院： <input :value="academy" v-model="academy"/>
-					</div>
-				</div>
-				<div class="form-row">
-					<div class="label">
-						班级： <input :value="grade" v-model="grade"/>
-					</div>
-				</div>
-				<div class="form-row">
-					<div class="label">
-						辅导员： <input :value="instructor" v-model="instructor"/>
-					</div>
-				</div>
-				<div class="form-row">
-					<div class="label">
-						辅导员电话： <input :value="phone" v-model="phone"/>
-					</div>
-				</div>
-				<div class="form-row">
-					<div class="label">
-						出校时间： <input :value="outTime" v-model="outTime"/>
-					</div>
-				</div>
-				<button class="submit" @click="setInfo">
-					确定
+				<button @click="changePage">
+					临时出校报备
 				</button>
 			</div>
 		</div>
@@ -271,19 +220,11 @@
 						this.grade = storage.grade || this.grade
 						this.instructor = storage.instructor || this.instructor
 						this.phone = storage.phone || this.phone
+						this.outTime = storage.outTime || this.outTime
 					}
-					console.log(storage)
 				},
-				setInfo() {
-					let storage = window.localStorage
-					storage.schoolNum = this.schoolNum
-					storage.name = this.name
-					storage.academy = this.academy
-					storage.grade = this.grade
-					storage.instructor = this.instructor
-					storage.phone = this.phone
-					this.show = false
-					// window.location.href = './record.html'
+				changePage() {
+					window.location.href = './record.html'
 				}
 			},
 			mounted(){
@@ -291,8 +232,6 @@
 				this.createTime = this.today+' '+this.currentTime
 				this.updateTime = this.today
 				this.outTime = this.today+' '+'09:00-22:00'
-			},
-			created() {
 				this.getInfo()
 			}
 		})
