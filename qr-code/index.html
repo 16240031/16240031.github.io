@@ -115,8 +115,8 @@
 	<script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
 </head>
 <body>
-	<h3>系统维护，暂停服务！请勿联系管理员。</h3>
-	<!-- <div id="app">
+	<!-- <h3>系统维护，暂停服务！请勿联系管理员。</h3> -->
+	<div id="app">
 		<div class="main-container">
 			<div class="qrcode-box">
 				<img src="./code.png" alt="">
@@ -173,7 +173,7 @@
 					</div>
 				</div>
 			</div>
-			<button @click="show = true">
+			<button @click.once="show = true">
 				临时出校报备
 			</button>
 		</div>
@@ -219,8 +219,8 @@
 				</button>
 			</div>
 		</div>
-	</div> -->
-	<!-- <script>
+	</div>
+	<script>
 		var app = new Vue({
 			el: '#app',
 			data: {
@@ -255,6 +255,6 @@
 				this.outTime = this.today+' '+'09:00-22:00'
 			}
 		})
-	</script> -->
+	</script>
 </body>
 </html>
