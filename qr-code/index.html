@@ -211,10 +211,20 @@
 				</div>
 				<div class="form-row">
 					<div class="label">
+						辅导员： <input :value="instructor" v-model="instructor"/>
+					</div>
+				</div>
+				<div class="form-row">
+					<div class="label">
+						辅导员电话： <input :value="phone" v-model="phone"/>
+					</div>
+				</div>
+				<div class="form-row">
+					<div class="label">
 						出校时间： <input :value="outTime" v-model="outTime"/>
 					</div>
 				</div>
-				<button class="submit" @click="show = false">
+				<button class="submit" @click="setInfo">
 					确定
 				</button>
 			</div>
@@ -230,6 +240,8 @@
 				name: '张三',
 				academy: '人工智能学院',
 				grade: '16计科1',
+				instructor: '陈冀东',
+				phone: '13691980123',
 				outTime: '2020-05-25 09:00-22:00',
 				show: false,
 				today: '',
@@ -246,6 +258,26 @@
 					let seconds = date.getSeconds() < 10 ? '0'+date.getSeconds() : date.getSeconds()
 					this.today = year+'-'+month+'-'+day
 					this.currentTime = hours+':'+minutes+':'+seconds
+				},
+				getInfo() {
+					let storage = window.localStorage
+					if(storage.length) {
+						this.name = storage.name || this.name
+						this.academy = storage.academy || this.academy
+						this.grade = storage.grade || this.grade
+						this.instructor = storage.instructor || this.instructor
+						this.phone = storage.phone || this.phone
+					}
+					console.log(storage)
+				},
+				setInfo() {
+					let storage = window.localStorage
+					storage.name = this.name
+					storage.academy = this.academy
+					storage.grade = this.grade
+					storage.instructor = this.instructor
+					storage.phone = this.phone
+					this.show = false
 				}
 			},
 			mounted(){
@@ -253,6 +285,9 @@
 				this.createTime = this.today+' '+this.currentTime
 				this.updateTime = this.today
 				this.outTime = this.today+' '+'09:00-22:00'
+			},
+			created() {
+				this.getInfo()
 			}
 		})
 	</script>
