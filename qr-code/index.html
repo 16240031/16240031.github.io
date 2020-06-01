@@ -176,6 +176,9 @@
 			<button @click.once="show = true">
 				临时出校报备
 			</button>
+			<!-- <button @click="setInfo">
+				临时出校报备
+			</button> -->
 		</div>
 		<div class="form-bg" v-if="show">
 			<div class="form-box">
@@ -262,6 +265,7 @@
 				getInfo() {
 					let storage = window.localStorage
 					if(storage.length) {
+						this.schoolNum = storage.schoolNum || this.schoolNum
 						this.name = storage.name || this.name
 						this.academy = storage.academy || this.academy
 						this.grade = storage.grade || this.grade
@@ -272,12 +276,14 @@
 				},
 				setInfo() {
 					let storage = window.localStorage
+					storage.schoolNum = this.schoolNum
 					storage.name = this.name
 					storage.academy = this.academy
 					storage.grade = this.grade
 					storage.instructor = this.instructor
 					storage.phone = this.phone
 					this.show = false
+					// window.location.href = './record.html'
 				}
 			},
 			mounted(){
