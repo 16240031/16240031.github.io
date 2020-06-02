@@ -63,7 +63,7 @@
 			border-bottom-color: #e8e8e8;
 		}
 		.outschool-info {
-			border: none;
+			/*border: none;*/
 		}
 		.row {
 			line-height: 14px;
@@ -84,6 +84,9 @@
 			color: #1E2329;
 			font-size: 14px;
 			font-family: Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,微软雅黑,Arial,sans-serif;
+		}
+		.button-wrap {
+			margin: 4px;
 		}
 		button{
 			width: 100%;
@@ -170,15 +173,17 @@
 				<div class="info-box outschool-info">
 					<h2 class="title">出校信息</h2>
 					<div class="row">
-						<span class="cell-title">出校时间</span><span class="cell-value">{{outTime}}</span>
+						<span class="cell-title">出校时间</span><span class="cell-value">{{ today+" "+outTime }}</span>
 					</div>
 					<div class="row">
 						<span class="cell-title">出校大门</span><span class="cell-value">官龙校区正门</span>
 					</div>
 				</div>
-				<button @click="changePage">
-					临时出校报备
-				</button>
+				<div class="button-wrap">
+					<button @click="changePage">
+						临时出校报备
+					</button>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -194,7 +199,7 @@
 				grade: '16计科1',
 				instructor: '陈冀东',
 				phone: '13691980123',
-				outTime: '2020-05-25 09:00-22:00',
+				outTime: '09:00-22:00',
 				show: false,
 				today: '',
 				currentTime: ''
@@ -231,7 +236,7 @@
 				this.getTime()
 				this.createTime = this.today+' '+this.currentTime
 				this.updateTime = this.today
-				this.outTime = this.today+' '+'09:00-22:00'
+				// this.outTime = this.today+' '+'09:00-22:00'
 				this.getInfo()
 			}
 		})
